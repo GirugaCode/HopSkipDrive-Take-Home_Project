@@ -15,6 +15,7 @@
 		2829B89226C762100000C309 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2829B89026C762100000C309 /* LaunchScreen.storyboard */; };
 		2829B89D26C762110000C309 /* HopSkipDrive_Take_Home_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2829B89C26C762110000C309 /* HopSkipDrive_Take_Home_ProjectTests.swift */; };
 		2829B8A826C762110000C309 /* HopSkipDrive_Take_Home_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2829B8A726C762110000C309 /* HopSkipDrive_Take_Home_ProjectUITests.swift */; };
+		2829B8B626C76ED20000C309 /* MyRidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2829B8B526C76ED20000C309 /* MyRidesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		2829B8A326C762110000C309 /* HopSkipDrive-Take-Home-ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HopSkipDrive-Take-Home-ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2829B8A726C762110000C309 /* HopSkipDrive_Take_Home_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopSkipDrive_Take_Home_ProjectUITests.swift; sourceTree = "<group>"; };
 		2829B8A926C762110000C309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2829B8B526C76ED20000C309 /* MyRidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRidesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				2829B88526C7620F0000C309 /* AppDelegate.swift */,
 				2829B88726C7620F0000C309 /* SceneDelegate.swift */,
 				2829B88926C7620F0000C309 /* ViewController.swift */,
+				2829B8B526C76ED20000C309 /* MyRidesViewController.swift */,
 				2829B88B26C7620F0000C309 /* Main.storyboard */,
 				2829B88E26C762100000C309 /* Assets.xcassets */,
 				2829B89026C762100000C309 /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			files = (
 				2829B88A26C7620F0000C309 /* ViewController.swift in Sources */,
 				2829B88626C7620F0000C309 /* AppDelegate.swift in Sources */,
+				2829B8B626C76ED20000C309 /* MyRidesViewController.swift in Sources */,
 				2829B88826C7620F0000C309 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
