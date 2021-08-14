@@ -62,6 +62,7 @@ class MyRidesViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
         tableView.register(MyRidesCell.self, forCellReuseIdentifier: myRidesCellId)
+        tableView.register(MyRidesHeaderView.self, forHeaderFooterViewReuseIdentifier: "Header")
     }
     
     /// Configures the views/autolayout of MyRidesViewController
@@ -86,5 +87,13 @@ extension MyRidesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyRidesCellId", for: indexPath) as! MyRidesCell
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header") as? MyRidesHeaderView
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
 }
