@@ -1,0 +1,6 @@
+framework module Pods_HopSkipDrive_Take_Home_Project_HopSkipDrive_Take_Home_ProjectUITests {
+  umbrella header "Pods-HopSkipDrive-Take-Home-Project-HopSkipDrive-Take-Home-ProjectUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
