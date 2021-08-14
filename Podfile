@@ -6,7 +6,7 @@ target 'HopSkipDrive-Take-Home-Project' do
   use_frameworks!
 
   # Pods for HopSkipDrive-Take-Home-Project
-  pod 'SnapKit', '~> 5.0.0'
+  pod 'SnapKit', '~> 5.0.0', :inhibit_warnings => true
 
   target 'HopSkipDrive-Take-Home-ProjectTests' do
     inherit! :search_paths
