@@ -18,6 +18,8 @@
 		2829B8A826C762110000C309 /* HopSkipDrive_Take_Home_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2829B8A726C762110000C309 /* HopSkipDrive_Take_Home_ProjectUITests.swift */; };
 		2829B8B626C76ED20000C309 /* MyRidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2829B8B526C76ED20000C309 /* MyRidesViewController.swift */; };
 		2829B8B826C783BD0000C309 /* MyRideCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2829B8B726C783BD0000C309 /* MyRideCells.swift */; };
+		282A415D26CAFB3500D873F5 /* HopSkipDriveModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A415C26CAFB3500D873F5 /* HopSkipDriveModels.swift */; };
+		282A415F26CB003000D873F5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282A415E26CB003000D873F5 /* NetworkService.swift */; };
 		28561EAA26C79F6B0051D706 /* MyRidesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28561EA926C79F6B0051D706 /* MyRidesHeaderView.swift */; };
 		28561EAC26C7BBD90051D706 /* RideDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28561EAB26C7BBD90051D706 /* RideDetailsViewController.swift */; };
 		324E7034A26447F630FA8005 /* Pods_HopSkipDrive_Take_Home_Project_HopSkipDrive_Take_Home_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FB37EB863E1BC9D0F616BA /* Pods_HopSkipDrive_Take_Home_Project_HopSkipDrive_Take_Home_ProjectUITests.framework */; };
@@ -60,6 +62,8 @@
 		2829B8A926C762110000C309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2829B8B526C76ED20000C309 /* MyRidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRidesViewController.swift; sourceTree = "<group>"; };
 		2829B8B726C783BD0000C309 /* MyRideCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRideCells.swift; sourceTree = "<group>"; };
+		282A415C26CAFB3500D873F5 /* HopSkipDriveModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopSkipDriveModels.swift; sourceTree = "<group>"; };
+		282A415E26CB003000D873F5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		28561EA926C79F6B0051D706 /* MyRidesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRidesHeaderView.swift; sourceTree = "<group>"; };
 		28561EAB26C7BBD90051D706 /* RideDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailsViewController.swift; sourceTree = "<group>"; };
 		2CBA8F96DA9A429E01AB8847 /* Pods-HopSkipDrive-Take-Home-Project-HopSkipDrive-Take-Home-ProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopSkipDrive-Take-Home-Project-HopSkipDrive-Take-Home-ProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-HopSkipDrive-Take-Home-Project-HopSkipDrive-Take-Home-ProjectUITests/Pods-HopSkipDrive-Take-Home-Project-HopSkipDrive-Take-Home-ProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 			children = (
 				280CCF4626CAF63200704726 /* Endpoint.swift */,
 				280CCF4826CAF87900704726 /* HopSkipDriveEndpoint.swift */,
+				282A415C26CAFB3500D873F5 /* HopSkipDriveModels.swift */,
+				282A415E26CB003000D873F5 /* NetworkService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282A415F26CB003000D873F5 /* NetworkService.swift in Sources */,
 				280CCF4726CAF63200704726 /* Endpoint.swift in Sources */,
 				2829B8B826C783BD0000C309 /* MyRideCells.swift in Sources */,
 				2829B88626C7620F0000C309 /* AppDelegate.swift in Sources */,
@@ -460,6 +467,7 @@
 				28561EAC26C7BBD90051D706 /* RideDetailsViewController.swift in Sources */,
 				2829B88826C7620F0000C309 /* SceneDelegate.swift in Sources */,
 				280CCF4926CAF87900704726 /* HopSkipDriveEndpoint.swift in Sources */,
+				282A415D26CAFB3500D873F5 /* HopSkipDriveModels.swift in Sources */,
 				28561EAA26C79F6B0051D706 /* MyRidesHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
