@@ -8,6 +8,8 @@
 import Foundation
 
 enum HopSkipDriveEndpoint: Endpoint {
+    case getRideResults
+    
     var scheme: String {
         switch self {
         default:
@@ -18,14 +20,14 @@ enum HopSkipDriveEndpoint: Endpoint {
     var baseURL: String {
         switch self {
         default:
-            return "https://storage.googleapis.com/"
+            return "storage.googleapis.com"
         }
     }
     
     var path: String {
         switch self {
-        default:
-            return "/hsd-interview-resources/simplified_my_rides_response.json/"
+        case .getRideResults:
+            return "/hsd-interview-resources/simplified_my_rides_response.json"
         }
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - HopSkipDrive
-struct HopSkipDrive: Codable {
+struct HopSkipDriveResponse: Codable {
     let rides: [Ride]
 }
 
@@ -16,7 +16,7 @@ struct HopSkipDrive: Codable {
 struct Ride: Codable {
     let tripID: Int
     let inSeries: Bool
-    let startsAt, endsAt: Date
+    let startsAt, endsAt: String
     let estimatedEarningsCents, estimatedRideMinutes: Int
     let estimatedRideMiles: Double
     let orderedWaypoints: [OrderedWaypoint]

@@ -20,6 +20,7 @@ class MyRidesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
+        fetchRidesData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +74,17 @@ class MyRidesViewController: UIViewController {
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
             make.bottom.equalTo(view.snp.bottom)
+        }
+    }
+    
+    private func fetchRidesData() {
+        NetworkService.request(endpoint: HopSkipDriveEndpoint.getRideResults) { (result: Result<HopSkipDriveResponse, Error>) in
+            switch result {
+            case .success(let response):
+                print("Response:", response)
+            case .failure(let error):
+                print("Error:", error)
+            }
         }
     }
 }

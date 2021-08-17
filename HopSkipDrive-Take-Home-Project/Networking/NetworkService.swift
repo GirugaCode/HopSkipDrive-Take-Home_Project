@@ -38,17 +38,15 @@ class NetworkService {
             }
             
             guard response != nil, let data = data else { return }
-            
-            DispatchQueue.main.async {
-                if let responseObject = try? JSONDecoder().decode(T.self, from: data) {
+                // Do Catch for the json response to be in object
+                do {
+                    let responseObject = try JSONDecoder().decode(T.self, from: data)
                     // Validate and provide to appropriate response object
                     completion(.success(responseObject))
-                } else {
+                } catch(let error) {
                     // Handles failure response
-                    let error = NSError(domain: "", code: 200, userInfo: [NSLocalizedDescriptionKey: "response"])
                     completion(.failure(error))
                 }
-            }
         }
         
         dataTask.resume()
