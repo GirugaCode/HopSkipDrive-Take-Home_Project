@@ -60,6 +60,15 @@ class MyRidesCell: UITableViewCell {
         return label
     }()
     
+    let addressList: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 15, weight: .thin)
+        label.lineBreakMode = .byWordWrapping
+        label.sizeToFit()
+        return label
+    }()
+    
     //MARK: - INIT
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -82,6 +91,7 @@ class MyRidesCell: UITableViewCell {
     }
     
     //MARK: - PRIVATE FUNCTION
+    
     /// Configures layout of the Playback Cell
     private func configureAutoLayout() {
         contentView.addSubview(backView)
@@ -97,6 +107,7 @@ class MyRidesCell: UITableViewCell {
         backView.addSubview(tripCardHeaderStackView)
         backView.addSubview(numberOfRiders)
         backView.addSubview(priceEst)
+        backView.addSubview(addressList)
         
         tripCardHeaderStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
@@ -113,6 +124,13 @@ class MyRidesCell: UITableViewCell {
             make.right.equalToSuperview().offset(-15)
         }
         
+        addressList.snp.makeConstraints { make in
+            make.top.equalTo(tripCardHeaderStackView.snp.bottom)
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.bottom.equalToSuperview()
+        }
+        
     }
     //MARK: - PUBLIC FUNCTIONS
     
@@ -125,10 +143,7 @@ class MyRidesCell: UITableViewCell {
         /// Calculates the maximum amount of riders for each trip
         guard let maxRiders = (ride.orderedWaypoints.max { $0.passengers.count < $1.passengers.count
         })?.passengers.count else { return }
-        
-        //TODO: Add each address the their cells
-//        print("Address:", ride.orderedWaypoints.map({$0.location.address}))
-        
+                
         self.numberOfRiders.text = "(\(maxRiders) riders)"
         
         // Looping through all the passengers and assigning booster seats
@@ -149,6 +164,11 @@ class MyRidesCell: UITableViewCell {
 
         let totalRiders = Helper.numberFormatDollars(dollars: priceEst)
         self.priceEst.text = "est. \(totalRiders ?? "")"
+        
+        //TODO: Add numbered order to each address the their cells
+        let addy = ride.orderedWaypoints.map({$0.location.address})
+        let multiLineAddress = addy.joined(separator: "\n")
+        self.addressList.text = multiLineAddress
         
     }
 
