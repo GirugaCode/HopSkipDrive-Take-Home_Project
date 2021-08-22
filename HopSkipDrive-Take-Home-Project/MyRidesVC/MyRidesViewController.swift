@@ -13,7 +13,7 @@ class MyRidesViewController: UIViewController {
     //MARK: - PROPERTIES
     var currentRides: [Ride] = [] {
         didSet {
-            groupedRides()
+            groupCurrentRides()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -98,7 +98,7 @@ class MyRidesViewController: UIViewController {
     }
     
     /// Groups the rides given by date
-    private func groupedRides(){
+    private func groupCurrentRides(){
         let datedRides = Dictionary(grouping: currentRides) { (element) -> String in
             let rideByDate = Helper.dateTimeChangeFormat(str: element.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "E M/d")
             return rideByDate
@@ -135,11 +135,23 @@ extension MyRidesViewController: UITableViewDelegate, UITableViewDataSource {
         for headerSection in groupedByDateRides[section] {
             header?.configureHeaderView(ride: headerSection)
         }
+        
+        let earliestStartTimeMap = groupedByDateRides[section].map {$0.startsAt}
+        if let earliestStartTime = earliestStartTimeMap.sorted().first {
+            header?.rideToTime.text = "\(Helper.dateTimeChangeFormat(str: earliestStartTime, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")) -"
+        }
+
+
+        let latestStartTimeMap = groupedByDateRides[section].map {$0.endsAt}
+        if let latestStartTime = latestStartTimeMap.sorted().last {
+            header?.rideFromTime.text = Helper.dateTimeChangeFormat(str: latestStartTime, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")
+        }
+        
+
+        // Calculates the total estimated cost for each section
         let centsPerSection = groupedByDateRides[section].map() {$0.estimatedEarningsCents}
         let sumCentsPerSection = centsPerSection.reduce(0, +)
-        
         let priceEst = sumCentsPerSection.centsToDollars()
-        
         let totalEstimatedCost = Helper.numberFormatDollars(dollars: priceEst)
         header?.estimatedCost.text = "\(totalEstimatedCost ?? "")"
         

@@ -21,14 +21,14 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private let rideToTime: UILabel = {
+    let rideToTime: UILabel = {
         let label = UILabel()
         label.text = "4:18a"
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
     }()
     
-    private let rideFromTime: UILabel = {
+    let rideFromTime: UILabel = {
         let label = UILabel()
         label.text = "4:26p"
         label.font = .systemFont(ofSize: 14, weight: .bold)
@@ -103,9 +103,6 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
     func configureHeaderView(ride: Ride) {
         
         self.rideDate.text = Helper.dateTimeChangeFormat(str: ride.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "E M/d")
-        
-        self.rideToTime.text = Helper.dateTimeChangeFormat(str: ride.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")
-        self.rideFromTime.text = Helper.dateTimeChangeFormat(str: ride.endsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")
         
     }
 }
