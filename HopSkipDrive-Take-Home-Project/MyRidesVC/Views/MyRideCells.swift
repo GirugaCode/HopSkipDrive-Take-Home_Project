@@ -23,7 +23,7 @@ class MyRidesCell: UITableViewCell {
     }()
     
     private lazy var tripCardHeaderStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [startTime, endTime, numberOfRiders])
+        let stackView = UIStackView(arrangedSubviews: [startTime, endTime])
         stackView.distribution = .fillEqually
         stackView.axis = .horizontal
         stackView.alignment = .fill
@@ -47,7 +47,7 @@ class MyRidesCell: UITableViewCell {
     
     let numberOfRiders: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.font = .systemFont(ofSize: 10, weight: .regular)
         label.text = "(2 riders)"
         return label
     }()
@@ -95,11 +95,17 @@ class MyRidesCell: UITableViewCell {
         }
         
         backView.addSubview(tripCardHeaderStackView)
+        backView.addSubview(numberOfRiders)
         backView.addSubview(priceEst)
         
         tripCardHeaderStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.left.equalToSuperview().offset(15)
+        }
+        
+        numberOfRiders.snp.makeConstraints { make in
+            make.top.equalTo(tripCardHeaderStackView.snp.top)
+            make.left.equalTo(tripCardHeaderStackView.snp.right)
         }
         
         priceEst.snp.makeConstraints { make in
@@ -120,7 +126,23 @@ class MyRidesCell: UITableViewCell {
         guard let maxRiders = (ride.orderedWaypoints.max { $0.passengers.count < $1.passengers.count
         })?.passengers.count else { return }
         
+        //TODO: Add each address the their cells
+//        print("Address:", ride.orderedWaypoints.map({$0.location.address}))
+        
         self.numberOfRiders.text = "(\(maxRiders) riders)"
+        
+        // Looping through all the passengers and assigning booster seats
+        ride.orderedWaypoints.forEach {$0.passengers.forEach { boosterSeat in
+            if boosterSeat.boosterSeat {
+                self.numberOfRiders.text = "(\(maxRiders) riders)" + "• (1 booster)"
+                }
+            }
+        }
+        
+        // Conditional text if there is only one rider
+        if maxRiders <= 1 {
+            self.numberOfRiders.text = "(\(maxRiders) rider)"
+        }
         
         
         let priceEst = ride.estimatedEarningsCents.centsToDollars()
