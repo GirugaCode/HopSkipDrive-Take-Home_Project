@@ -11,7 +11,7 @@ import UIKit
 class MyRidesViewController: UIViewController {
     
     //MARK: - PROPERTIES
-    var sampleArray: [String] = ["One", "Two", "Three"]
+    var currentRides: [Ride] = []
     private var tableView: UITableView!
     private let cellRowHeight: CGFloat = 180
     private let myRidesCellId = "MyRidesCellId"
@@ -77,11 +77,12 @@ class MyRidesViewController: UIViewController {
         }
     }
     
+    /// Calls the NetworkService to fetch data from API
     private func fetchRidesData() {
         NetworkService.request(endpoint: HopSkipDriveEndpoint.getRideResults) { (result: Result<HopSkipDriveResponse, Error>) in
             switch result {
             case .success(let response):
-                print("Response:", response)
+                self.currentRides = response.rides
             case .failure(let error):
                 print("Error:", error)
             }
@@ -92,11 +93,12 @@ class MyRidesViewController: UIViewController {
 extension MyRidesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sampleArray.count
+        return currentRides.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyRidesCellId", for: indexPath) as! MyRidesCell
+        cell.configureCell(ride: currentRides[indexPath.row])
         return cell
     }
     
@@ -107,7 +109,13 @@ extension MyRidesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header") as? MyRidesHeaderView
+        header?.configureHeaderView(ride: currentRides[section])
+        print("Section:", section)
         return header
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
