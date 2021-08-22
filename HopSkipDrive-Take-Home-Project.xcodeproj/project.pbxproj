@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2800027A26D30FD900BAF1C8 /* RideDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2800027926D30FD900BAF1C8 /* RideDetailViewCell.swift */; };
 		2809E75D26D1DF09007D50AF /* Helper+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809E75C26D1DF09007D50AF /* Helper+Extension.swift */; };
 		2809E75F26D1DF1A007D50AF /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809E75E26D1DF1A007D50AF /* Int+Extension.swift */; };
 		280CCF4726CAF63200704726 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280CCF4626CAF63200704726 /* Endpoint.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2800027926D30FD900BAF1C8 /* RideDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailViewCell.swift; sourceTree = "<group>"; };
 		2809E75C26D1DF09007D50AF /* Helper+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper+Extension.swift"; sourceTree = "<group>"; };
 		2809E75E26D1DF1A007D50AF /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		280CCF4626CAF63200704726 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2800027826D30FC300BAF1C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2800027926D30FD900BAF1C8 /* RideDetailViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		2809E75726D1DBE4007D50AF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				28561EAB26C7BBD90051D706 /* RideDetailsViewController.swift */,
+				2800027826D30FC300BAF1C8 /* Views */,
 			);
 			path = RideDetailsVC;
 			sourceTree = "<group>";
@@ -475,6 +486,7 @@
 			files = (
 				282A415F26CB003000D873F5 /* NetworkService.swift in Sources */,
 				280CCF4726CAF63200704726 /* Endpoint.swift in Sources */,
+				2800027A26D30FD900BAF1C8 /* RideDetailViewCell.swift in Sources */,
 				2829B8B826C783BD0000C309 /* MyRideCells.swift in Sources */,
 				2829B88626C7620F0000C309 /* AppDelegate.swift in Sources */,
 				2829B8B626C76ED20000C309 /* MyRidesViewController.swift in Sources */,
