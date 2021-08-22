@@ -11,7 +11,15 @@ import UIKit
 class MyRidesViewController: UIViewController {
     
     //MARK: - PROPERTIES
-    var currentRides: [Ride] = []
+    var currentRides: [Ride] = [] {
+        didSet {
+            groupedRides()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    var groupedByDateRides = [[Ride]]()
     private var tableView: UITableView!
     private let cellRowHeight: CGFloat = 180
     private let myRidesCellId = "MyRidesCellId"
@@ -63,7 +71,7 @@ class MyRidesViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
         tableView.register(MyRidesCell.self, forCellReuseIdentifier: myRidesCellId)
-        tableView.register(MyRidesHeaderView.self, forHeaderFooterViewReuseIdentifier: "Header")
+        tableView.register(MyRidesHeaderView.self, forHeaderFooterViewReuseIdentifier: MyRidesHeaderView.identifier)
     }
     
     /// Configures the views/autolayout of MyRidesViewController
@@ -88,17 +96,32 @@ class MyRidesViewController: UIViewController {
             }
         }
     }
+    
+    /// Groups the rides given by date
+    private func groupedRides(){
+        let datedRides = Dictionary(grouping: currentRides) { (element) -> String in
+            let rideByDate = Helper.dateTimeChangeFormat(str: element.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "E M/d")
+            return rideByDate
+        }
+        
+        let sortedKeys = datedRides.keys.sorted(by: {$0 > $1})
+        sortedKeys.forEach { (key) in
+            let values = datedRides[key]
+            groupedByDateRides.append(values ?? [])
+        }
+    
+    }
 }
 
 extension MyRidesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentRides.count
+        return groupedByDateRides[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyRidesCellId", for: indexPath) as! MyRidesCell
-        cell.configureCell(ride: currentRides[indexPath.row])
+        cell.configureCell(ride: groupedByDateRides[indexPath.section][indexPath.row])
         return cell
     }
     
@@ -108,14 +131,23 @@ extension MyRidesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header") as? MyRidesHeaderView
-        header?.configureHeaderView(ride: currentRides[section])
-        print("Section:", section)
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MyRidesHeaderView.identifier) as? MyRidesHeaderView
+        for headerSection in groupedByDateRides[section] {
+            header?.configureHeaderView(ride: headerSection)
+        }
+        let centsPerSection = groupedByDateRides[section].map() {$0.estimatedEarningsCents}
+        let sumCentsPerSection = centsPerSection.reduce(0, +)
+        
+        let priceEst = sumCentsPerSection.centsToDollars()
+        
+        let totalEstimatedCost = Helper.numberFormatDollars(dollars: priceEst)
+        header?.estimatedCost.text = "\(totalEstimatedCost ?? "")"
+        
         return header
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return groupedByDateRides.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

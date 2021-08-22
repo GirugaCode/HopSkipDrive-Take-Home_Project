@@ -9,8 +9,11 @@ import SnapKit
 import UIKit
 
 class MyRidesHeaderView: UITableViewHeaderFooterView {
+    
+    //MARK: - PROPERTIES
     static let identifier = "MyRidesHeader"
     
+    //MARK: - UI COMPONENTS
     private let rideDate: UILabel = {
         let label = UILabel()
         label.text = "Thu 6/17"
@@ -48,7 +51,7 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private let estimatedCost: UILabel = {
+    let estimatedCost: UILabel = {
         let label = UILabel()
         label.text = "$105.25"
         label.font = .systemFont(ofSize: 18, weight: .light)
@@ -62,7 +65,8 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
         stackView.alignment = .fill
         return stackView
     }()
-        
+    
+    //MARK: - INITIALIZERS
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.addSubview(tripHeaderStackView)
@@ -74,11 +78,13 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - LAYOUT VIEWS
     override func layoutSubviews() {
         super.layoutSubviews()
         configureAutoLayout()
     }
     
+    //MARK: PRIVATE FUNCTIONS
     private func configureAutoLayout() {
         
         tripHeaderStackView.snp.makeConstraints { make in
@@ -93,9 +99,13 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
         }
     }
     
+    //MARK: - PUBLIC FUNCTIONS
     func configureHeaderView(ride: Ride) {
         
-        self.rideToTime.text = Helper.dateTimeChangeFormat(str: ride.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "hh:mm")
-        self.rideFromTime.text = Helper.dateTimeChangeFormat(str: ride.endsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "hh:mm")
+        self.rideDate.text = Helper.dateTimeChangeFormat(str: ride.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "E M/d")
+        
+        self.rideToTime.text = Helper.dateTimeChangeFormat(str: ride.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")
+        self.rideFromTime.text = Helper.dateTimeChangeFormat(str: ride.endsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")
+        
     }
 }

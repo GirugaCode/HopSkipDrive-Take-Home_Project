@@ -9,7 +9,7 @@ import Foundation
 
 class Helper {
     
-    /// Formates String date to output any Date format
+    /// Formats String date to output any Date format
     /// - Parameters:
     ///     - stringWithDate: The string date you would like to convert
     ///     - inDateFormat: The intaking date format the stringWithDate is
@@ -22,9 +22,29 @@ class Helper {
         let outFormatter = DateFormatter()
         outFormatter.locale = Locale(identifier: "en_US_POSIX")
         outFormatter.dateFormat = outDateFormat
+        outFormatter.amSymbol = "a"
+        outFormatter.pmSymbol = "p"
 
         let inStr = stringWithDate
         let date = inFormatter.date(from: inStr)!
         return outFormatter.string(from: date)
+    }
+    
+    /// Formats double values of dollars to $xx.xx
+    /// - Parameters:
+    ///     - dollars: The double value you would like to format
+    static func numberFormatDollars(dollars: Double) -> String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.groupingSeparator = ","
+        numberFormatter.groupingSize = 3
+        numberFormatter.usesGroupingSeparator = true
+        numberFormatter.decimalSeparator = "."
+        numberFormatter.numberStyle = .currency
+        numberFormatter.maximumFractionDigits = 2
+        
+        let number = NSNumber(value: dollars)
+        let formattedValue = numberFormatter.string(from: number)
+        
+        return formattedValue
     }
 }

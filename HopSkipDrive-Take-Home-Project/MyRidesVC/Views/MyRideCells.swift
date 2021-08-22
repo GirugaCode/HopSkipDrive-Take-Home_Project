@@ -108,18 +108,15 @@ class MyRidesCell: UITableViewCell {
         }
         
     }
+    //MARK: - PUBLIC FUNCTIONS
     
+    /// Configures the data for each cell
     func configureCell(ride: Ride) {
     
-        self.startTime.text = Helper.dateTimeChangeFormat(str: ride.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "hh:mm")
-        self.endTime.text = Helper.dateTimeChangeFormat(str: ride.endsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "hh:mm")
-//        self.numberOfRiders.text = ride.orderedWaypoints[1]
-//
-//        for orderedWaypoint in ride.orderedWaypoints {
-//            let riderCount = orderedWaypoint.passengers.count
-//        }
+        self.startTime.text = "\(Helper.dateTimeChangeFormat(str: ride.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")) - "
+        self.endTime.text = Helper.dateTimeChangeFormat(str: ride.endsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")
         
-        /// Calculates the maximum amount of drivers for each trip
+        /// Calculates the maximum amount of riders for each trip
         guard let maxRiders = (ride.orderedWaypoints.max { $0.passengers.count < $1.passengers.count
         })?.passengers.count else { return }
         
@@ -127,18 +124,9 @@ class MyRidesCell: UITableViewCell {
         
         
         let priceEst = ride.estimatedEarningsCents.centsToDollars()
-        let numberFormatter = NumberFormatter()
-        numberFormatter.groupingSeparator = ","
-        numberFormatter.groupingSize = 3
-        numberFormatter.usesGroupingSeparator = true
-        numberFormatter.decimalSeparator = "."
-        numberFormatter.numberStyle = .currency
-        numberFormatter.maximumFractionDigits = 2
-        
-        let number = NSNumber(value: priceEst)
-        
-        guard let formattedValue = numberFormatter.string(from: number) else { return }
-        self.priceEst.text = "est. \(formattedValue)"
+
+        let totalRiders = Helper.numberFormatDollars(dollars: priceEst)
+        self.priceEst.text = "est. \(totalRiders ?? "")"
         
     }
 
