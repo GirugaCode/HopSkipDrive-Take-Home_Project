@@ -9,6 +9,8 @@ import SnapKit
 import UIKit
 
 class RideDetailsViewController: UIViewController {
+    //MARK: - PROPERTIES
+    var ride: Ride?
     
     //MARK: - VIEW CYCLE
     override func viewDidLoad() {

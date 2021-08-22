@@ -126,8 +126,10 @@ extension MyRidesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = RideDetailsViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let controller = RideDetailsViewController()
+        controller.ride = groupedByDateRides[indexPath.section][indexPath.row]
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
