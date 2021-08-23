@@ -62,6 +62,7 @@ class RideDetailViewHeader: UITableViewHeaderFooterView, MKMapViewDelegate {
         let label = UILabel()
         label.text = "$105.25"
         label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = .systemBlue
         return label
     }()
     
@@ -106,7 +107,7 @@ class RideDetailViewHeader: UITableViewHeaderFooterView, MKMapViewDelegate {
         
         tripHeaderStackView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
             make.centerY.equalTo(tripEstPriceHeaderStackView.snp.centerY)
         }
         

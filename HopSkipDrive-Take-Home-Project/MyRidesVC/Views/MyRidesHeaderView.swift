@@ -90,7 +90,7 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
         
         tripHeaderStackView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
             make.centerY.equalToSuperview()
         }
         

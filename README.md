@@ -5,10 +5,11 @@
 * [Swift 5](https://developer.apple.com/swift/)
 * [Xcode 11.7](https://developer.apple.com/xcode/)
 * [CocoaPods](https://guides.cocoapods.org/terminal/commands.html)
+    * [SnapKit](https://https://snapkit.io/)
 
-My Ride Screen | Ride Detail Screen
+Login screen | User Profile
 - | -
-![MyRidesImage](/images/my-rides-screen.png) | ![RideDetailsImage](/images/ride-details-screen.png)
+![MyRidesImage](/images/my-rides-screen.png)| ![RideDetailsImage](/images/ride-details-screen.png)
 
 <!-- GETTING STARTED -->
 # Getting Started
@@ -47,8 +48,6 @@ HopSkipDrive-Take-Home-Project.xcworkspace
 
 ## My Rides
 
-I as a user can capture the previous 60 seconds of audio using my iOS device so that I don’t need to be prepared in advance to record an interesting moment.
-
 ### Trip header
 - [x] The trip header summarizes the cards below it.
 - [x] The time range (e.g., 4:18a - 4:26p) ranges from the earliest to latest time in the section.
@@ -79,4 +78,15 @@ I as a user can capture the previous 60 seconds of audio using my iOS device so 
 - [x] If the waypoint is an anchor then show the diamond icon.
 - [x] If the waypoint is not an anchor then show the circle icon.
 
+# Notes & Improvments
+
+### Notes
+* There were ordered_waypoints with anchor's set to false in the API when it could be true to mark a stop rather then a drop-off
+    * This led to some of the waypoints in the Ride Details view to have two drop-off locations
+* The lat and lng in some locations did not correspond with the location address
+    * The map annotations only corresponded with the lat and lng of the API
+
+### Improvments
+* Adding Unit Tests
+* Highlighting the destions from point to point in the map view
 
