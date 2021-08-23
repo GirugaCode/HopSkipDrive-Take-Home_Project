@@ -101,7 +101,7 @@ extension RideDetailsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 250
+        return 270
     }
     
 }

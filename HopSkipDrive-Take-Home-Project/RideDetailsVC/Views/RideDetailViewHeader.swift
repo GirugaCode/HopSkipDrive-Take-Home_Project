@@ -73,12 +73,20 @@ class RideDetailViewHeader: UITableViewHeaderFooterView, MKMapViewDelegate {
         return stackView
     }()
     
+    let tripSeriesLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .light)
+        label.text = "This trip is part of a series."
+        return label
+    }()
+    
     //MARK: - INITIALIZERS
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.addSubview(tripHeaderStackView)
         contentView.addSubview(tripEstPriceHeaderStackView)
         contentView.addSubview(mapView)
+        contentView.addSubview(tripSeriesLabel)
         contentView.backgroundColor = .yellow
     }
     
@@ -111,7 +119,13 @@ class RideDetailViewHeader: UITableViewHeaderFooterView, MKMapViewDelegate {
             make.top.equalTo(tripEstPriceHeaderStackView.snp.bottom)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-15)
+        }
+        
+        tripSeriesLabel.snp.makeConstraints { make in
+            make.top.equalTo(mapView.snp.bottom)
+            make.left.equalToSuperview().offset(10)
+            make.height.equalTo(25)
         }
     }
     
@@ -134,6 +148,13 @@ class RideDetailViewHeader: UITableViewHeaderFooterView, MKMapViewDelegate {
         
         // Zooms the map to the annotations of interest
         mapView.fitAll()
+        
+        // Logic to show if the ride is part of a series
+        if ride.inSeries {
+            tripSeriesLabel.isHidden = false
+        } else {
+            tripSeriesLabel.isHidden = true
+        }
         
     }
     
