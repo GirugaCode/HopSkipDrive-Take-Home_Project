@@ -6,6 +6,7 @@
 * [Xcode 11.7](https://developer.apple.com/xcode/)
 * [CocoaPods](https://guides.cocoapods.org/terminal/commands.html)
 
+- | -
 ![MyRidesImage](/images/my-rides-screen.png) | ![RideDetailsImage](/images/ride-details-screen.png)
 
 <!-- GETTING STARTED -->
