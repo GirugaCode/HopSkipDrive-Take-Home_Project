@@ -57,13 +57,38 @@ class RideDetailsViewController: UIViewController {
 extension RideDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        ride?.orderedWaypoints.count ?? 0
-        return 2
+        return ride?.orderedWaypoints.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: rideDetailsCellId) as! RideDetailViewCell
+        if let ride = ride {
+            cell.configureCell(ride: ride)
+        }
+        
+        cell.addressLabel.text = ride?.orderedWaypoints[indexPath.row].location.address
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MyRidesHeaderView.identifier) as? MyRidesHeaderView
+        
+        header?.rideDate.text = Helper.dateTimeChangeFormat(str: ride?.startsAt ?? "", inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "E M/d")
+        
+        header?.rideFromTime.text = Helper.dateTimeChangeFormat(str: ride?.startsAt ?? "", inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")
+        
+        header?.rideToTime.text = Helper.dateTimeChangeFormat(str: ride?.endsAt ?? "", inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")
+        
+        
+        let priceEst = ride?.estimatedEarningsCents.centsToDollars()
+        let totalEstPrice = Helper.numberFormatDollars(dollars: priceEst ?? 0.00)
+        header?.estimatedCost.text = totalEstPrice
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
 }

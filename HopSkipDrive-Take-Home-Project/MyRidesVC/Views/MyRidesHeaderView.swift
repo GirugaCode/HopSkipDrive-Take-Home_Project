@@ -14,7 +14,7 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
     static let identifier = "MyRidesHeader"
     
     //MARK: - UI COMPONENTS
-    private let rideDate: UILabel = {
+    let rideDate: UILabel = {
         let label = UILabel()
         label.text = "Thu 6/17"
         label.font = .systemFont(ofSize: 18, weight: .bold)
