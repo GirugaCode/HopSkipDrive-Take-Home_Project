@@ -3,7 +3,7 @@
 # Tech Stack
 
 * [Swift 5](https://developer.apple.com/swift/)
-* [Xcode 11.7](https://developer.apple.com/xcode/)
+* [Xcode 12.5.1](https://developer.apple.com/xcode/)
 * [CocoaPods](https://guides.cocoapods.org/terminal/commands.html)
     * [SnapKit](https://https://snapkit.io/)
 
