@@ -67,6 +67,16 @@ extension RideDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         cell.addressLabel.text = ride?.orderedWaypoints[indexPath.row].location.address
+        
+        let anchor = ride?.orderedWaypoints[indexPath.row].anchor
+        if anchor ?? true {
+            cell.pickUpDropOffLabel.text = "Pickup"
+            cell.symbol.image = #imageLiteral(resourceName: "diamond")
+        } else {
+            cell.pickUpDropOffLabel.text = "Drop-off"
+            cell.symbol.image = #imageLiteral(resourceName: "circle")
+        }
+        
         return cell
     }
     
