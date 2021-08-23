@@ -103,6 +103,7 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
     //MARK: - PUBLIC FUNCTIONS
     func configureHeaderView(ride: Ride) {
         
+        // Sets the ride date for the ride
         self.rideDate.text = Helper.dateTimeChangeFormat(str: ride.startsAt, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "E M/d")
         
     }

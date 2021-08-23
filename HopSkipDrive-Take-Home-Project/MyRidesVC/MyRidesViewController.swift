@@ -133,16 +133,19 @@ extension MyRidesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MyRidesHeaderView.identifier) as? MyRidesHeaderView
+        
+        // Configures the header for each section
         for headerSection in groupedByDateRides[section] {
             header?.configureHeaderView(ride: headerSection)
         }
         
+        // Sets the earliest start time of the trip
         let earliestStartTimeMap = groupedByDateRides[section].map {$0.startsAt}
         if let earliestStartTime = earliestStartTimeMap.sorted().first {
             header?.rideToTime.text = "\(Helper.dateTimeChangeFormat(str: earliestStartTime, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")) -"
         }
 
-
+        // Sets the latest start time of the trip
         let latestStartTimeMap = groupedByDateRides[section].map {$0.endsAt}
         if let latestStartTime = latestStartTimeMap.sorted().last {
             header?.rideFromTime.text = Helper.dateTimeChangeFormat(str: latestStartTime, inDateFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ", outDateFormat: "h:mma")

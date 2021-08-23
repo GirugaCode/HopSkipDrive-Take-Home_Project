@@ -85,9 +85,7 @@ class MyRidesCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layoutIfNeeded()
-        
         configureAutoLayout()
-
     }
     
     //MARK: - PRIVATE FUNCTION
@@ -160,12 +158,12 @@ class MyRidesCell: UITableViewCell {
         }
         
         
+        // Configures the price of each ride
         let priceEst = ride.estimatedEarningsCents.centsToDollars()
-
-        let totalRiders = Helper.numberFormatDollars(dollars: priceEst)
-        self.priceEst.text = "est. \(totalRiders ?? "")"
+        let formattedPrice = Helper.numberFormatDollars(dollars: priceEst)
+        self.priceEst.text = "est. \(formattedPrice ?? "")"
         
-        //TODO: Add numbered order to each address the their cells
+        // Configures the addresses for each ride
         let addy = ride.orderedWaypoints.map({$0.location.address})
         let multiLineAddress = addy.joined(separator: "\n")
         self.addressList.text = multiLineAddress

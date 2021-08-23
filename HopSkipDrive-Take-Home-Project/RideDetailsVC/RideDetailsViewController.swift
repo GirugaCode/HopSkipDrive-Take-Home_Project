@@ -53,6 +53,7 @@ class RideDetailsViewController: UIViewController {
         }
     }
     
+    /// Sets up the navigation bar for the view
     private func configureNavigationBar() {
         view.backgroundColor = .white
         self.navigationController?.navigationBar.topItem?.title = " "
