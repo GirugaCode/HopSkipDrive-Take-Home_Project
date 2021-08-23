@@ -17,7 +17,7 @@ class MyRidesCell: UITableViewCell {
         view.layer.shadowColor = UIColor.gray.cgColor
         view.layer.shadowOpacity = 0.3
         view.layer.shadowOffset = .init(width: 0, height: 0)
-        view.layer.shadowRadius = 8
+        view.layer.shadowRadius = 5
         view.layer.cornerRadius = 10
         return view
     }()

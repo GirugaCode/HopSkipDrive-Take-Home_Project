@@ -31,7 +31,7 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
     let rideFromTime: UILabel = {
         let label = UILabel()
         label.text = "4:26p"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.font = .systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
@@ -55,6 +55,7 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.text = "$105.25"
         label.font = .systemFont(ofSize: 18, weight: .light)
+        label.textColor = .blue
         return label
     }()
     
@@ -71,7 +72,7 @@ class MyRidesHeaderView: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.addSubview(tripHeaderStackView)
         contentView.addSubview(tripEstPriceHeaderStackView)
-        contentView.backgroundColor = .yellow
+        contentView.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

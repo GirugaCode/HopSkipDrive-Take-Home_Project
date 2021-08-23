@@ -38,7 +38,7 @@ class RideDetailViewHeader: UITableViewHeaderFooterView, MKMapViewDelegate {
     let rideFromTime: UILabel = {
         let label = UILabel()
         label.text = "4:26p"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.font = .systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
@@ -87,7 +87,7 @@ class RideDetailViewHeader: UITableViewHeaderFooterView, MKMapViewDelegate {
         contentView.addSubview(tripEstPriceHeaderStackView)
         contentView.addSubview(mapView)
         contentView.addSubview(tripSeriesLabel)
-        contentView.backgroundColor = .yellow
+        contentView.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

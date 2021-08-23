@@ -21,13 +21,12 @@ class MyRidesViewController: UIViewController {
     }
     var groupedByDateRides = [[Ride]]()
     private var tableView: UITableView!
-    private let cellRowHeight: CGFloat = 180
+    private let cellRowHeight: CGFloat = 140
     private let myRidesCellId = "MyRidesCellId"
 
     //MARK: - VIEW CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         fetchRidesData()
     }
     

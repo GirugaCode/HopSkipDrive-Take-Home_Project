@@ -22,10 +22,9 @@ class RideDetailsViewController: UIViewController {
     //MARK: - VIEW CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
-        navigationItem.title = "Ride Details"
         configureTableView()
         configureAutoLayout()
+        configureNavigationBar()
     }
     
     //MARK: - PRIVATE FUNCTION
@@ -52,6 +51,12 @@ class RideDetailsViewController: UIViewController {
             make.right.equalTo(view.snp.right)
             make.bottom.equalTo(view.snp.bottom)
         }
+    }
+    
+    private func configureNavigationBar() {
+        view.backgroundColor = .white
+        self.navigationController?.navigationBar.topItem?.title = " "
+        navigationItem.title = "Ride Details"
     }
     
 }
