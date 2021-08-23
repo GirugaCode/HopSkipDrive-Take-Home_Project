@@ -106,9 +106,4 @@ class RideDetailViewCell: UITableViewCell {
             make.width.equalTo(40)
         }
     }
-    
-    //MARK: - PUBLIC FUNCTION
-    func configureCell(ride: Ride) {
-        
-    }
 }

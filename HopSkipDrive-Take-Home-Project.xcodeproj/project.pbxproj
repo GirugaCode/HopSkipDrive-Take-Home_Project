@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2800027A26D30FD900BAF1C8 /* RideDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2800027926D30FD900BAF1C8 /* RideDetailViewCell.swift */; };
+		2800027C26D33B6800BAF1C8 /* RideDetailViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2800027B26D33B6800BAF1C8 /* RideDetailViewHeader.swift */; };
+		2800027E26D351C800BAF1C8 /* MKMapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2800027D26D351C800BAF1C8 /* MKMapView+Extension.swift */; };
 		2809E75D26D1DF09007D50AF /* Helper+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809E75C26D1DF09007D50AF /* Helper+Extension.swift */; };
 		2809E75F26D1DF1A007D50AF /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809E75E26D1DF1A007D50AF /* Int+Extension.swift */; };
 		280CCF4726CAF63200704726 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280CCF4626CAF63200704726 /* Endpoint.swift */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		2800027926D30FD900BAF1C8 /* RideDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailViewCell.swift; sourceTree = "<group>"; };
+		2800027B26D33B6800BAF1C8 /* RideDetailViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideDetailViewHeader.swift; sourceTree = "<group>"; };
+		2800027D26D351C800BAF1C8 /* MKMapView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extension.swift"; sourceTree = "<group>"; };
 		2809E75C26D1DF09007D50AF /* Helper+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper+Extension.swift"; sourceTree = "<group>"; };
 		2809E75E26D1DF1A007D50AF /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		280CCF4626CAF63200704726 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				2800027926D30FD900BAF1C8 /* RideDetailViewCell.swift */,
+				2800027B26D33B6800BAF1C8 /* RideDetailViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			children = (
 				2809E75C26D1DF09007D50AF /* Helper+Extension.swift */,
 				2809E75E26D1DF1A007D50AF /* Int+Extension.swift */,
+				2800027D26D351C800BAF1C8 /* MKMapView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -496,6 +502,8 @@
 				280CCF4926CAF87900704726 /* HopSkipDriveEndpoint.swift in Sources */,
 				2809E75F26D1DF1A007D50AF /* Int+Extension.swift in Sources */,
 				282A415D26CAFB3500D873F5 /* HopSkipDriveModels.swift in Sources */,
+				2800027C26D33B6800BAF1C8 /* RideDetailViewHeader.swift in Sources */,
+				2800027E26D351C800BAF1C8 /* MKMapView+Extension.swift in Sources */,
 				28561EAA26C79F6B0051D706 /* MyRidesHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
