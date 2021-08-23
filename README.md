@@ -7,9 +7,8 @@
 * [CocoaPods](https://guides.cocoapods.org/terminal/commands.html)
     * [SnapKit](https://https://snapkit.io/)
 
-Login screen | User Profile
-- | -
-![MyRidesImage](/images/my-rides-screen.png)| ![RideDetailsImage](/images/ride-details-screen.png)
+![MyRidesImage](/images/my-rides-screen.png)
+![RideDetailsImage](/images/ride-details-screen.png)
 
 <!-- GETTING STARTED -->
 # Getting Started
